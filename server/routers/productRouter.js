@@ -6,13 +6,13 @@ const {
   postData,
   updateData,
 } = require("../controllers/productController");
-
+const authMiddleware = require("../middlewares/authMiddlewares");
 const router = express.Router();
 
-router.get("/", getAllData);
-router.get("/:id", getDataByID);
-router.delete("/:id", deleteData);
-router.post("/", postData);
-router.put("/:id", updateData);
+router.get("/", authMiddleware(["user", "admin"]), getAllData);
+router.get("/:id", authMiddleware(["user", "admin"]), getDataByID);
+router.delete("/:id", authMiddleware(["admin"]), deleteData);
+router.post("/", authMiddleware(["admin"]), postData);
+router.put("/:id", authMiddleware(["admin"]), updateData);
 
 module.exports = router;

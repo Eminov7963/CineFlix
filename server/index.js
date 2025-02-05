@@ -23,7 +23,7 @@ app.use("/api/users", userRouter);
 app.use("/api", authRouter);
 mongoose.connect(Base_Url).then(() => {
   app.listen(Port, () => {
-    console.log(`Example app listening on port ${Port}`);
+    console.log(`http://localhost:${Port}`);
   });
   console.log("Connected!");
 });
