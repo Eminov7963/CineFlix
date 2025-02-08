@@ -18,9 +18,9 @@ const Login = () => {
     e.preventDefault();
     try {
       const regUser = await axios.post(`${Base_Url}/api/register`, {
-        register_name,
-        register_email,
-        register_password,
+        name: register_name, 
+        email: register_email,
+        password: register_password,
       });
       console.log(regUser); // Server'dan gelen cevabı kontrol edin
     } catch (error) {
@@ -33,10 +33,13 @@ const Login = () => {
     e.preventDefault();
     try {
       const user = await axios.post(`${Base_Url}/api/login`, {
-        log_email,
-        log_password,
+        email: log_email,
+        password:log_password,
       });
       console.log(user); // Server'dan gelen cevabı kontrol edin
+      if (user.status === 200) {
+        navigate("/home"); 
+      }
     } catch (error) {
       console.log("Login Error: ", error); // Hata varsa kontrol edin
     }
