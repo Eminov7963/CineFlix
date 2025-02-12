@@ -62,7 +62,11 @@ const deleteData = async (req, res) => {
 
 const postData = async (req, res) => {
   try {
-    const products = ModuleMovie({...req.body});
+    const imagePath = req.file.path;
+    const products = ModuleMovie({
+      ...req.body,
+      image: `http://localhost:8080/${imagePath}`,  
+    });
     await products.save()
     if (!products) {
       res.status(404).send({

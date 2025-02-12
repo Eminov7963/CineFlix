@@ -5,3 +5,16 @@
   text-decoration: none;
   list-style-type: none;
 }
+
+body {
+  background-color: #14181C;
+  color: white;
+
+
+}
+a{
+  color: white;
+}
+a.active{
+  color: orange;
+}

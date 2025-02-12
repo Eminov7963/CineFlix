@@ -1,0 +1,188 @@
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Crimson Text", serif;
+
+  .container {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+      url("https://assets.nflxext.com/ffe/siteui/vlv3/638e9299-0637-42d1-ba39-54ade4cf2bf6/web/AZ-en-20250203-TRIFECTA-perspective_ff49e843-8632-46c7-b3cd-24cff5caac9f_large.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 200px;
+    padding: 10px 8%;
+    height: 100vh;
+    position: relative;
+  }
+
+  .headcontain {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: transparent;
+    color: #fff;
+    width: 90%;
+    z-index: 2;
+  }
+
+  .left h1 {
+    font-size: 2.6rem;
+    margin: 0;
+    a{
+      color: red;
+    }
+    span {
+      color: white;
+    }
+  }
+
+  nav ul {
+    display: flex;
+  }
+
+  nav ul li {
+    display: flex;
+    gap: 30px;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+  }
+
+  nav a:hover {
+    color: #ffcc00;
+  }
+
+  .search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .languageSelect {
+     margin-left: 20px;
+        position: relative;
+
+      .languageDropdown {
+        padding: 5px 15px;
+        font-size: 1rem;
+        border-radius: 25px;
+        border: 1px solid #ccc;
+        background-color: rgba(255, 255, 255, 0.8);
+        color: #333;
+        appearance: none;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        outline: none;
+        position: relative;
+        box-sizing: border-box;
+      }
+
+      .languageDropdown:focus {
+        border-color: #ffcc00;
+        box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+      }
+
+      .languageDropdown::after {
+        content: "▼";
+        font-size: 1.2rem;
+        color: #888;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+      }
+
+      .languageDropdown:focus::after {
+        color: #ffcc00;
+      }
+    }
+  }
+
+  .searchInput {
+    padding: 5px 10px;
+    font-size: 1rem;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    width: 200px; /* Daha geniş */
+    outline: none;
+    background-color: transparent;
+    color: #dacdcd;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .searchInput::placeholder {
+    color: #888;
+    font-style: italic;
+    transition: color 0.3s ease;
+  }
+
+  .searchInput:focus {
+    border-color: #ffcc00;
+    background-color: transparent;
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+  }
+
+  .searchInput:focus::placeholder {
+    color: #ffcc00;
+  }
+
+  .searchInput::before {
+    content: "🔍";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    font-size: 1.2rem;
+  }
+
+  .searchInput:focus::before {
+    color: #ffcc00;
+  }
+  .headcenter {
+    width: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    h1 {
+      font-size: 56px;
+      line-height: 70px;
+      font-weight: 900;
+    }
+    p {
+      font-size: 20px;
+      font-weight: 500;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .headcontain {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    nav ul {
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .searchInput {
+      width: 200px;
+    }
+    .languageDropdown {
+      width: 120px;
+    }
+  }
+}
