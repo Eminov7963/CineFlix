@@ -38,12 +38,22 @@ const AuthProvider = ({ children }) => {
     Cookies.remove("token");
   }
 
-  useEffect(() => {
-    const savedToken = Cookies.get("token");
-    if (savedToken) {
-      handleLogin(savedToken);
+useEffect(() => {
+  const savedToken = Cookies.get("token");
+  if (savedToken && !token) {
+    try {
+      const decoded = jwtDecode(savedToken);
+      setToken(savedToken);
+      setDecodedToken(decoded);
+    } catch (error) {
+      console.error("Invalid token:", error);
+      Cookies.remove("token");
+      setToken(null);
+      setDecodedToken(null);
     }
-  }, []);
+  }
+}, [token]);
+
 
   return (
     <AuthContext.Provider

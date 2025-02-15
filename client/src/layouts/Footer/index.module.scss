@@ -11,10 +11,10 @@ footer{
         gap: 20px;
         .head{
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             align-items: center;
             gap: 70px;
-            width: 100%;
+            width: 70%;
             .about{
                 ul{
                     display: flex;
@@ -43,7 +43,7 @@ footer{
         .foot{
             display: flex;
             
-            width: 63%;
+            width: 70%;
             align-items: center;
             padding: 10px 0px;
             p{

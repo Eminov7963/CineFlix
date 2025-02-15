@@ -8,7 +8,8 @@ dotenv.config()
 const cors = require("cors")
 app.use(cors())
 app.use(express.json())
-const ProductRouter = require("./routers/productRouter")
+const ProductRouter = require("./routers/productRouter");
+const TvRouter = require("./routers/tvRouter")
 const userRouter = require("./routers/userRouter");
 const authRouter = require("./routers/authRouter");
 
@@ -20,7 +21,8 @@ const Base_Url =
   "mongodb+srv://eminovemin199:eminovemin199@eminfullstack-project.mbhs8.mongodb.net/fullStack-practica?retryWrites=true&w=majority&appName=EminFullStack-Project";
 const Port = 8080;
 
-app.use("/api/products",ProductRouter)
+app.use("/api/products",ProductRouter);
+app.use("/api/tv", TvRouter);
 app.use("/api/users", userRouter);
 app.use("/api", authRouter);
 
