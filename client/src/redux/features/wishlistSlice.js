@@ -5,9 +5,9 @@ const wishListSlice = createSlice({
   initialState: { items: [] },
   reducers: {
     toggleFavorites: (state, action) => {
-      const found = state.items.find((p) => p.id === action.payload.id);
+      const found = state.items.find((p) => p._id === action.payload._id);
       if (found) {
-        state.items = state.items.filter((q) => q.id !== action.payload.id);
+        state.items = state.items.filter((q) => q._id !== action.payload._id);
       } else {
         state.items = [...state.items, action.payload];
       }

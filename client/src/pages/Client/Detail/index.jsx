@@ -15,9 +15,6 @@ const Detail = () => {
   };
   return (
     <main className={styles.detail}>
-      <button className={styles.back} onClick={() => navigate(-1)}>
-        ⬅ Geri
-      </button>
       <div className={styles.content}>
         <img src={item.poster} alt={item.title} className={styles.poster} />
         <div className={styles.info}>
@@ -72,10 +69,19 @@ const Detail = () => {
             </p>
           )}
           {item.trailer && (
-            <button onClick={()=>{handleClick(item)}}>▶ Fragmanı İzle</button>
+            <button
+              onClick={() => {
+                handleClick(item);
+              }}
+            >
+              ▶ Fragmanı İzle
+            </button>
           )}
         </div>
       </div>
+      <button className={styles.back} onClick={() => navigate(-1)}>
+        ⬅ Geri
+      </button>
     </main>
   );
 };

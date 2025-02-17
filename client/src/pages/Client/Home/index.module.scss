@@ -103,6 +103,117 @@ main {
       }
     }
   }
+  .total1 {
+  .head {
+    text-align: center;
+    margin-bottom: 40px;
+    h3 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #fff;
+    }
+  }
+
+  .bottom {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    padding: 0 10%;
+    align-items: flex-start;
+    
+    @media (max-width: 1200px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      padding: 0 5%;
+    }
+
+    .boxs {
+      background-color: #2a2a2a;
+      color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      overflow: hidden;
+      
+      h1 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        text-align: left;
+      }
+
+      p {
+        font-size: 1.1rem;
+        line-height: 1.5;
+        margin-bottom: 20px;
+        text-align: left;
+      }
+
+      svg {
+        font-size: 3rem;
+        color: #ffcc00;
+      }
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+      }
+    }
+  }
+}
+  .open{
+    .accordion{
+      margin: 60px auto;
+      width: 100%;
+      max-width: 750px;
+      li{
+        list-style: none;
+        width: 100%;
+        padding: 5px;
+        label{
+          display: flex;
+          align-items: center;
+          padding: 20px;
+          font-size: 18px;
+          font-weight: 500;
+          background: #303030;
+          margin: 2px;
+          cursor: pointer;
+          position: relative;
+        }
+        label::after{
+          content: '+';
+          font-size: 34px;
+          position: absolute;
+          right: 20px;
+        }
+        input[type="radio"]{
+          display: none;
+        }
+        .content{
+          background: #303030;
+          text-align: left;
+          overflow: hidden;
+          padding: 0 20px;
+          max-height: 0;
+          transition: max-height 0.5s, padding 0.5s;
+        }
+        input[type="radio"]:checked + label +.content{
+          max-height: 600px;
+          padding: 30px 20px;
+        }
+      }
+    }
+  }
+
 }
 
 // Responsive Düzenlemeler

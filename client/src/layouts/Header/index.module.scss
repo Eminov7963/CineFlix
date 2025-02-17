@@ -16,7 +16,7 @@ header {
     flex-direction: column;
     gap: 200px;
     padding: 10px 8%;
-    height: 100vh;
+    height: 90vh;
     position: relative;
   }
 
@@ -34,9 +34,11 @@ header {
   .left h1 {
     font-size: 2.6rem;
     margin: 0;
-    a{
+
+    a {
       color: red;
     }
+
     span {
       color: white;
     }
@@ -56,24 +58,35 @@ header {
     color: #fff;
     font-size: 1.5rem;
     transition: color 0.3s ease;
+
+    &:hover {
+      color: #ffcc00;
+    }
   }
 
-  nav a:hover {
-    color: #ffcc00;
+  .fl {
+    font-size: 1.7rem;
+  }
+
+  .lis {
+    font-size: 1.7rem;
   }
 
   .search {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     .languageSelect {
-     margin-left: 20px;
-        position: relative;
+      margin-left: 20px;
+      position: relative;
+      display: flex;
+      align-items: center;
 
       .languageDropdown {
-        padding: 5px 15px;
+        padding: 8px 15px;
         font-size: 1rem;
-        border-radius: 25px;
+        border-radius: 20px;
         border: 1px solid #ccc;
         background-color: rgba(255, 255, 255, 0.8);
         color: #333;
@@ -81,21 +94,19 @@ header {
         transition: all 0.3s ease;
         cursor: pointer;
         outline: none;
-        position: relative;
         box-sizing: border-box;
+
+        &:focus {
+          border-color: #ffcc00;
+          box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+        }
       }
 
-      .languageDropdown:focus {
-        border-color: #ffcc00;
-        box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
-      }
-
-      .languageDropdown::after {
-        content: "▼";
+      &::after {
         font-size: 1.2rem;
         color: #888;
         position: absolute;
-        right: 10px;
+        right: 15px;
         top: 50%;
         transform: translateY(-50%);
         pointer-events: none;
@@ -105,61 +116,88 @@ header {
         color: #ffcc00;
       }
     }
+
+    .searchInput {
+      padding: 8px 15px;
+      font-size: 1rem;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      width: 250px;
+      outline: none;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      transition: all 0.3s ease-in-out;
+
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      &:focus {
+        border-color: #ffcc00;
+        box-shadow: 0 0 8px rgba(255, 204, 0, 0.6);
+      }
+    }
+
+    .results {
+      position: absolute;
+      top: 40px;
+      left: 0;
+      width: 100%;
+      max-height: 250px;
+      overflow-y: auto;
+      background-color: rgba(0, 0, 0, 0.9);
+      border-radius: 10px;
+      padding: 10px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 100;
+
+      .result {
+        display: flex;
+        align-items: center;
+        padding: 8px 12px;
+        cursor: pointer;
+        transition: background 0.3s;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        img {
+          width: 40px;
+          height: 60px;
+          object-fit: cover;
+          border-radius: 5px;
+          margin-right: 10px;
+        }
+
+        span {
+          color: #fff;
+          font-size: 1rem;
+        }
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.2);
+        }
+      }
+    }
   }
 
-  .searchInput {
-    padding: 5px 10px;
-    font-size: 1rem;
-    border-radius: 25px;
-    border: 1px solid #ccc;
-    width: 200px; /* Daha geniş */
-    outline: none;
-    background-color: transparent;
-    color: #dacdcd;
-    transition: all 0.3s ease;
-    position: relative;
-  }
-
-  .searchInput::placeholder {
-    color: #888;
-    font-style: italic;
-    transition: color 0.3s ease;
-  }
-
-  .searchInput:focus {
-    border-color: #ffcc00;
-    background-color: transparent;
-    box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
-  }
-
-  .searchInput:focus::placeholder {
-    color: #ffcc00;
-  }
-
-  .searchInput::before {
-    content: "🔍";
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #888;
-    font-size: 1.2rem;
-  }
-
-  .searchInput:focus::before {
-    color: #ffcc00;
-  }
   .headcenter {
     width: 50%;
     text-align: center;
     display: flex;
     flex-direction: column;
     gap: 30px;
+
     h1 {
       font-size: 56px;
       line-height: 70px;
       font-weight: 900;
     }
+
     p {
       font-size: 20px;
       font-weight: 500;
@@ -181,6 +219,7 @@ header {
     .searchInput {
       width: 200px;
     }
+
     .languageDropdown {
       width: 120px;
     }

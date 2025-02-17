@@ -1,0 +1,166 @@
+.card {
+  display: flex;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  .tvImage {
+    width: 180px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  .tvInfo {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff;
+    border-radius: 12px;
+
+    h3 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #555;
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-around;
+
+      button {
+        display: flex;
+        align-items: center;
+        padding: 10px 18px;
+        font-size: 15px;
+        font-weight: 600;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+
+        &.trailer {
+          background-color: #0d6efd;
+          color: white;
+          &:hover {
+            background-color: #0b5ed7;
+          }
+        }
+
+        &.detail {
+          background-color: #28a745;
+          color: white;
+          &:hover {
+            background-color: #218838;
+          }
+        }
+
+        &.wishlist {
+          background-color: transparent;
+          color: #e74c3c;
+          border: 2px solid #e74c3c;
+
+          svg {
+            margin-right: 8px;
+          }
+
+          &:hover {
+            background-color: #e74c3c;
+            color: white;
+            border: 2px solid transparent;
+          }
+        }
+      }
+    }
+  }
+}
+
+h2 {
+  font-size: 26px;
+  color: #555;
+  text-align: center;
+  margin-top: 50px;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .card {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+
+    .tvImage {
+      width:80%;
+      height: 80%;
+      margin-bottom: 15px;
+    }
+
+    .tvInfo {
+      padding: 15px;
+      text-align: center;
+
+      h3 {
+        font-size: 18px;
+      }
+
+      p {
+        font-size: 14px;
+      }
+
+      .buttons {
+        flex-direction: center;
+        align-items: center;
+        gap: 10px;
+        
+
+        button {
+          width: 100%;
+          padding: 12px 20px;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    .tvInfo {
+      padding: 10px;
+    }
+
+    .buttons button {
+      font-size: 14px;
+      padding: 10px 15px;
+    }
+  }
+
+  h2 {
+    font-size: 20px;
+    margin-top: 40px;
+  }
+}

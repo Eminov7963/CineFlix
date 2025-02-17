@@ -18,7 +18,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="movie/:id" element={<MovieTrailer />} />
         <Route path="tv/:id" element={<Detail />} />
-        <Route path="wishlist" element={<Wishlist/>}/>
+        <Route path="watchlist" element={<Wishlist />} />
       </Route>
     </Routes>
   );
