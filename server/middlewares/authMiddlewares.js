@@ -1,30 +1,23 @@
 const jwt = require("jsonwebtoken");
-const dotenv = require("dotenv");
-dotenv.config();
 
 const authMiddleware = (roles) => {
-  return async (req, res, next) => {
+  return (req, res, next) => {
+    const token = req.headers.authorization?.split(" ")[1]; // Bearer token
+
+    if (!token) {
+      return res.status(403).json({ message: "Token gereklidir." });
+    }
+
     try {
-      let token = req.headers.authorization;
-
-      if (!token) {
-        return res
-          .status(401)
-          .json({ message: "Authorization token is required!" });
+      const decoded = jwt.verify(token, process.env.JWT_SECRET); // Token'ı doğrulama
+      req.userId = decoded.userId; // Token'dan userId'yi alıyoruz
+      console.log("Decoded Token:", decoded); // Token'ın doğru şekilde decode edilip edilmediğini kontrol etmek için log
+      if (roles && !roles.includes(decoded.role)) {
+        return res.status(403).json({ message: "Yetkisiz erişim." });
       }
-
-      if (token && token.startsWith("Bearer")) {
-        // token = token.slice(7);
-        token = token.split(" ")[1];
-      }
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      if (!roles.includes(decoded.role)) {
-        return res.status(403).json({ message: "you do not have access!" });
-      }
-
       next();
     } catch (error) {
-      res.status(500).json({ message: error.message });
+      return res.status(403).json({ message: "Geçersiz token." });
     }
   };
 };

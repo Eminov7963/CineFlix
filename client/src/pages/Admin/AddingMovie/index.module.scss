@@ -1,0 +1,93 @@
+/* index.module.scss */
+.addMovieContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.addMovieTitle {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.addMovieForm {
+  width: 100%;
+  max-width: 700px;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+
+  .addMovieLabel {
+    display: block;
+    font-size: 1rem;
+    color: #555;
+    margin: 12px 0 6px;
+  }
+
+  .addMovieInput {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease-in-out;
+
+    &:focus {
+      outline: none;
+      border-color: #4b9ce2;
+      background-color: #fff;
+    }
+  }
+
+  .addMovieFileInput {
+    padding: 0;
+    font-size: 1rem;
+    background-color: #f0f0f0;
+  }
+
+  .addMovieButton {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    background-color: #4b9ce2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #388eb0;
+    }
+
+    &:active {
+      background-color: #26709b;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .addMovieContainer {
+    padding: 0 10px;
+  }
+
+  .addMovieForm {
+    padding: 20px;
+  }
+
+  .addMovieTitle {
+    font-size: 1.8rem;
+  }
+
+  .addMovieInput,
+  .addMovieButton {
+    font-size: 1rem;
+  }
+}

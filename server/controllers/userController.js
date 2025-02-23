@@ -29,7 +29,7 @@ const deleteUser = async (req, res) => {
   const { id } = req.params;
   try {
     const deletedUser = await UserModel.findByIdAndDelete(id);
-    if (!deleteUser) {
+    if (!deletedUser){
       return res
         .status(404)
         .json({ message: "failed to delete! | product not found!" });

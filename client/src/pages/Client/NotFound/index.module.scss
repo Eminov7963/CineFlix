@@ -1,0 +1,63 @@
+// Genel stil ayarları
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+$error-color: #e74c3c;
+$text-color: #2c3e50;
+$background-color: #f4f6f7;
+$hover-color: #2980b9;
+
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;  // Sayfa boyutuna tam oturması için
+  background: linear-gradient(135deg, $primary-color, $secondary-color);
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.not-found-title {
+  font-size: 120px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -5px;
+  color: $error-color;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+.not-found-message {
+  font-size: 1.8rem;
+  margin-top: 15px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.not-found-description {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  max-width: 450px;
+  margin-bottom: 30px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.back-home-link {
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: white;
+  background-color: $primary-color;
+  padding: 12px 30px;
+  border-radius: 50px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+
+  &:hover {
+    background-color: $hover-color;
+    transform: translateY(-3px);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}

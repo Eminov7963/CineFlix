@@ -1,0 +1,157 @@
+.films {
+  padding: 20px;
+  background-color: #141414;
+  color: #fff;
+
+  .names {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+
+  .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    .search {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        font-size: 16px;
+        height: 30px;
+        font-weight: bold;
+        margin: 0px 0px 0px 0px;
+      }
+
+      input {
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #333;
+        color: #fff;
+        font-size: 16px;
+        outline: none;
+
+        &::placeholder {
+          color: #bbb;
+        }
+      }
+    }
+
+    .category {
+      select {
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #333;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        outline: none;
+      }
+    }
+  }
+
+  .products {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+
+    .movies,
+    .tv {
+      h2 {
+        font-size: 22px;
+        margin-bottom: 15px;
+      }
+
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+
+      .card {
+        background-color: #222;
+        border-radius: 10px;
+        overflow: hidden;
+        text-align: center;
+        transition: transform 0.3s ease-in-out;
+        box-sizing: border-box;
+        height: 364px;
+
+        &:hover {
+          transform: scale(1.02);
+        }
+
+        img {
+          width: 100%;
+          height: 70%;
+          object-fit: cover;
+        }
+
+        h3 {
+          font-size: 16px;
+          padding: 10px;
+          background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .buttons {
+          display: flex;
+          justify-content: space-around;
+          margin-top: 10px;
+
+          button {
+            padding: 8px 15px;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            &:hover {
+              background-color: #444;
+            }
+
+            &.trailer {
+              background: #ff4500;
+
+              &:hover {
+                background-color: #218838;
+              }
+            }
+
+            &.detail {
+              background: #008cff;
+
+              &:hover {
+                background-color: #0056b3;
+              }
+            }
+
+            &.wishlist {
+              background: transparent;
+              color: white;
+              font-size: 18px;
+
+
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsive Tasarım
+@media (max-width: 768px) {
+  .films {
+    .products {
+      grid-template-columns: 1fr;
+    }
+  }
+}

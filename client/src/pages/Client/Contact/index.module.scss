@@ -1,0 +1,89 @@
+.contactSection {
+  display: flex;
+  justify-content: space-between;
+  padding: 60px;
+  background-color: #121212;
+  color: #fff;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+.imageContainer {
+  flex: 0.4;  // Adjusted to make the image a bit bigger
+  display: flex;
+  justify-content: center;
+  align-items: center;  // Centers the image horizontally and vertically
+  margin-right: 20px;  // Adds a bit of space between the image and text
+
+  img {
+    width: 100%;
+    max-width: 350px;  // Set a max-width to ensure image doesn’t stretch too much
+    border-radius: 15px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.textContainer {
+  flex: 0.6;  // Adjusted to ensure there's a good balance between text and image
+  max-width: 600px;
+
+  h1 {
+    font-size: 2.5rem;
+    color: #ff9800;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+
+    a {
+      color: #ff9800;
+      text-decoration: none;
+      font-weight: bold;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .emailList {
+    p {
+      margin-bottom: 15px;
+
+      strong {
+        font-size: 1.4rem;
+        color: #ff9800;
+      }
+
+      a {
+        color: #fff;
+        font-size: 1rem;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .imageContainer {
+    flex: 0.7;  // Makes image container bigger on smaller screens
+    max-width: 100%;
+    margin-right: 0;  // Removes the margin on smaller screens
+  }
+
+  .textContainer {
+    flex: 1;
+    max-width: 100%;
+  }
+}

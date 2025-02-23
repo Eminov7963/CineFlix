@@ -6,6 +6,7 @@ const {
   postData,
   updateData,
 } = require("../controllers/productController");
+
 const authMiddleware = require("../middlewares/authMiddlewares");
 const router = express.Router();
 
@@ -14,9 +15,9 @@ router.get("/:id", authMiddleware(["user", "admin"]), getDataByID);
 router.delete("/:id", authMiddleware(["admin"]), deleteData);
 router.post(
   "/",
-  authMiddleware(["admin"]),
+  authMiddleware(["user", "admin"]),
   postData
 );
-router.put("/:id", authMiddleware(["admin"]), updateData);
+router.patch("/:id", authMiddleware(["user", "admin"]), updateData);
 
 module.exports = router;

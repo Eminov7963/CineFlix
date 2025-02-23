@@ -24,8 +24,13 @@ const userSchema = new mongoose.Schema(
       required: true,
       default: "user",
     },
+    Ispremium: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
   },
   { timestamps: true }
 );
-
-module.exports = mongoose.model("User", userSchema);
+const UserModel = mongoose.model("User", userSchema);
+module.exports = UserModel;

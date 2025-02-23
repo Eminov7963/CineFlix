@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import "./index.css"; // CSS dosyasını import ediyoruz
+import React, { useState, useEffect } from "react";
+import "./index.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie"; // Çerezler için js-cookie kütüphanesini import ediyoruz
@@ -14,6 +14,12 @@ const Login = () => {
 
   const navigate = useNavigate();
 
+  // Login sayfasına gelindiğinde token'ı sıfırlama
+  useEffect(() => {
+    // Token varsa, sileriz
+    Cookies.remove("token");
+  }, []);
+
   // Register işlemi
   const handleChangeReg = async (e) => {
     e.preventDefault();
@@ -23,9 +29,9 @@ const Login = () => {
         email: register_email,
         password: register_password,
       });
-      console.log(regUser); // Server'dan gelen cevabı kontrol edin
+      console.log(regUser);
     } catch (error) {
-      console.log("Register Error: ", error); // Hata varsa kontrol edin
+      console.log("Register Error: ", error);
     }
   };
 
@@ -37,10 +43,10 @@ const Login = () => {
         email: log_email,
         password: log_password,
       });
-      console.log(user); // Server'dan gelen cevabı kontrol edin
+      console.log(user);
 
       if (user.status === 200) {
-        const token = user.data.token; // Server'dan gelen token (örnek olarak)
+        const token = user.data.token; // Server'dan gelen token
 
         // Token'ı çereze kaydediyoruz
         Cookies.set("token", token, { expires: 1 }); // Token'ı 1 gün süreyle kaydet
@@ -49,7 +55,7 @@ const Login = () => {
         navigate("/home");
       }
     } catch (error) {
-      console.log("Login Error: ", error); // Hata varsa kontrol edin
+      console.log("Login Error: ", error);
     }
   };
 

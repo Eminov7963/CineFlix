@@ -29,25 +29,28 @@ const login = async (req, res) => {
   try {
     const user = await UserModel.findOne({ email });
     if (!user || !(await bcrypt.compare(password, user.password))) {
-      return res
-        .status(401)
-        .json({ message: "email və ya password yanlışdır!" });
+      return res.status(401).json({ message: "Email və ya şifrə yanlışdır!" });
     }
 
+    // Token oluştururken, kullanıcı ID'sini (user._id) de ekliyoruz
     const token = jwt.sign(
-      { email: user.email, role: user.role },
+      {
+        userId: user._id, // Burada userId'yi ekliyoruz
+        email: user.email,
+        role: user.role,
+      },
       process.env.JWT_SECRET,
-      { expiresIn: "24h" }
+      { expiresIn: "24h" } // Token süresi
     );
 
-
     res.status(200).json({
-      message: "login uğurla tamamlandı!",
+      message: "Giriş başarılı!",
       user,
-      token,
+      token, // Token'ı yanıt olarak döndürüyoruz
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
+
 module.exports = { register, login };

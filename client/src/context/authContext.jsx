@@ -8,52 +8,64 @@ export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(Cookies.get("token") || null);
   const [decodedToken, setDecodedToken] = useState(null);
+  const navigate = useNavigate();
 
-  const nav = useNavigate();
+  // Kullanıcı giriş yaptığında çağrılacak fonksiyon
   function handleLogin(value) {
     if (!value) return;
 
     try {
       const decoded = jwtDecode(value);
-      console.log(decoded);
+      console.log("Decoded Token:", decoded);
 
-      const expiresInDays =
-        (decoded.exp * 1000 - Date.now()) / (1000 * 60 * 60 * 24);
+      const expiresInSeconds = decoded.exp - Math.floor(Date.now() / 1000);
+      if (expiresInSeconds <= 0) {
+        console.error("Token süresi dolmuş!");
+        handleLogout();
+        return;
+      }
 
-      Cookies.set("token", value, { expires: expiresInDays });
+      // Token'ı belirlenen süre kadar cookies'e kaydet
+      Cookies.set("token", value, {
+        expires: expiresInSeconds / (60 * 60 * 24),
+      });
       setToken(value);
       setDecodedToken(decoded);
-      nav("/admin");
+      navigate("/admin");
     } catch (error) {
-      console.error("Invalid token:", error);
-      setToken(null);
-      setDecodedToken(null);
-      Cookies.remove("token");
+      console.error("Geçersiz token:", error);
+      handleLogout();
     }
   }
 
+  // Kullanıcı çıkış yaptığında çağrılacak fonksiyon
   function handleLogout() {
     setToken(null);
     setDecodedToken(null);
     Cookies.remove("token");
+    navigate("/login");
   }
 
-useEffect(() => {
-  const savedToken = Cookies.get("token");
-  if (savedToken && !token) {
-    try {
-      const decoded = jwtDecode(savedToken);
-      setToken(savedToken);
-      setDecodedToken(decoded);
-    } catch (error) {
-      console.error("Invalid token:", error);
-      Cookies.remove("token");
-      setToken(null);
-      setDecodedToken(null);
+  // Uygulama yüklendiğinde token kontrolü yap
+  useEffect(() => {
+    const savedToken = Cookies.get("token");
+    if (savedToken) {
+      try {
+        const decoded = jwtDecode(savedToken);
+        const expiresInSeconds = decoded.exp - Math.floor(Date.now() / 1000);
+        if (expiresInSeconds <= 0) {
+          console.error("Token süresi dolmuş!");
+          handleLogout();
+        } else {
+          setToken(savedToken);
+          setDecodedToken(decoded);
+        }
+      } catch (error) {
+        console.error("Geçersiz token:", error);
+        handleLogout();
+      }
     }
-  }
-}, [token]);
-
+  }, []); // ✅ `token` bağımlılığı kaldırıldı, sadece bir kere çalışır.
 
   return (
     <AuthContext.Provider

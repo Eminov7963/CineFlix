@@ -69,12 +69,16 @@ const Header = () => {
                 <NavLink to="/home/films" className={styles.fl}>
                   Films
                 </NavLink>
-                <NavLink to="/home/lists" className={styles.lis}>
-                  Lists
-                </NavLink>
                 <NavLink to="/home/watchlist">
                   Watchlist <sup>{wishlist?.items.length}</sup>
                 </NavLink>
+                <NavLink to="/home/premium">
+                  <div className={styles.premium}>Premium</div>
+                </NavLink>
+                <NavLink to="/home/cineflix">
+                  <div className={styles.premium}>CinePro</div>
+                </NavLink>
+                
               </li>
             </ul>
           </nav>

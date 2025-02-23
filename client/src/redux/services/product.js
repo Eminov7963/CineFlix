@@ -7,9 +7,9 @@ export const productsApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: Base_Url,
     prepareHeaders: (headers) => {
-      const token = Cookies.get("token"); // Token'i al
+      const token = Cookies.get("token"); 
       if (token) {
-        headers.set("Authorization", `Bearer ${token}`); // Yetkilendirme ekle
+        headers.set("Authorization", `Bearer ${token}`); 
       }
       return headers;
     },

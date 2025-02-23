@@ -14,14 +14,12 @@ const Footer = () => {
             <nav>
               <ul>
                 <li>
-                  <NavLink to="/about">About</NavLink>
+                  <NavLink to="/home/about">About</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/contact">Contact</NavLink>
+                  <NavLink to="/home/contact">Contact</NavLink>
                 </li>
-                <li>
-                  <NavLink to="/news">News</NavLink>
-                </li>
+ 
               </ul>
             </nav>
           </div>
@@ -39,8 +37,8 @@ const Footer = () => {
         </div>
         <div className={styles.foot}>
           <p>
-            © CineFLix Limited. Made by fans in Aotearoa New Zealand. Film
-            data from TMDb. Mobile site.
+            © CineFLix Limited. Made by fans in Aotearoa New Zealand. Film data
+            from TMDb. Mobile site.
           </p>
         </div>
       </div>
